@@ -1,0 +1,73 @@
+WindowManager:
+    MainWindow:
+    Encryption:
+	Decryption:
+
+<MainWindow>:
+	name: "Vigenere"
+	GridLayout:
+		size: root.width, root.height
+		cols: 2
+		Button:
+			text: "Encrypt"
+			on_release: app.root.current = "Encryption"
+			size: 150, 70
+			size_hint: None, None
+		Button:
+			text: "Decrypt"
+			on_release: app.root.current = "Decryption"
+			size: 150, 70
+			size_hint: None, None
+<Encryption>:
+	name: "Encryption"
+	plaintext: plaintext
+	key_e: key_e
+	GridLayout:
+		size: root.width, root.height
+		cols:1
+	
+		GridLayout:
+			cols:2
+			Label:
+				text: "plaintext"
+			TextInput:
+				multiline:False
+				id: plaintext 
+			Label:
+				text:"key"
+			TextInput:
+				multiline:False
+				id: key_e 
+		Button:
+			text:"Submit"
+			on_release: root.Encrypt()
+		Button:
+			text: "back"
+			on_release:app.root.current = "Vigenere"
+<Decryption>:
+	name: "Decryption"
+	ciphertext: ciphertext
+	key_d: key_d
+		
+	GridLayout:
+		size: root.width, root.height
+		cols:1
+	
+		GridLayout:
+			cols:2
+			Label:
+				text:"Ciphertext"
+			TextInput:
+				multiline:False
+				id: ciphertext 
+			Label:
+				text:"key"
+			TextInput:
+				multiline:False
+				id: key_d 
+		Button:
+			text:"Submit"
+			on_release: root.Decrypt()
+		Button:
+			text: "back"
+			on_release:app.root.current = "Vigenere"
